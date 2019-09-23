@@ -29,7 +29,7 @@
     "warnOnUnsupportedTypeScriptVersion": true
   },
   "rules": {
-    "adjacent-overload-signatures": true,
+    "adjacent-overload-signatures": "warn",
     "indent": "off",
     "no-console": "warn",
     "@typescript-eslint/no-non-null-assertion": "warn",
