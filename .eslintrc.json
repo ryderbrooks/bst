@@ -29,21 +29,23 @@
     "warnOnUnsupportedTypeScriptVersion": true
   },
   "rules": {
-    "adjacent-overload-signatures": "warn",
+    "@typescript-eslint/adjacent-overload-signatures": "warn",
     "indent": "off",
     "no-console": "warn",
+    "@typescript-eslint/ban-ts-ignore": "warn",
     "@typescript-eslint/no-non-null-assertion": "warn",
     "@typescript-eslint/indent": "off",
     "@typescript-eslint/camelcase": "warn",
     "@typescript-eslint/prefer-interface": "off",
     "no-fallthrough": "warn",
     "@typescript-eslint/class-name-casing": "off",
-    "@typescript-eslint/no-object-literal-type-assertion": [
-      "error",
-      {
-        "allowAsParameter": true
-      }
-    ],
+//    "@typescript-eslint/no-object-literal-type-assertion": [
+//      "error",
+//      {
+//        "allowAsParameter": true,
+//        "allow-arguments": true
+//      }
+//    ],
     "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/interface-name-prefix": "off"
   },

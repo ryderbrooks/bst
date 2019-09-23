@@ -1,3 +1,4 @@
+import { BSTNode } from './BST-Node';
 import {
   IBST,
   IBSTNode,
@@ -5,7 +6,6 @@ import {
   INodeFactory,
   IRotation,
 }                  from '../meta/interfaces';
-import { BSTNode } from './BST-Node';
 
 
 
@@ -21,8 +21,10 @@ export class BST<T extends IComparable,
   public root: N | null = null;
 
 
-  public insert( item: T|N ): N {
-    let node = item instanceof BSTNode ? item : this.wrapNode(item as T, null);
+  public insert( item: T | N ): N {
+    const node = item instanceof BSTNode
+               ? item
+               : this.wrapNode(item as T, null);
 
     if( this.root === null ) {
       this.root = node as N;
@@ -59,7 +61,7 @@ export class BST<T extends IComparable,
     }
     while ( queue.length ) {
       const n = queue.pop()!;
-      for ( let item of n ) {
+      for ( const item of n ) {
         yield item;
       }
       if( n.right !== null ) {
@@ -82,14 +84,14 @@ export class BST<T extends IComparable,
     let n: N | undefined;
     while ( queue.length ) {
       n = queue.pop()!;
-      for ( let item of n ) {
+      for ( const item of n ) {
         yield item;
       }
       if( n.right ) {
         queue.push(n.right);
       }
       while ( n.left ) {
-        for ( let item of n.left ) {
+        for ( const item of n.left ) {
           yield item;
         }
         n = n.left;
@@ -128,7 +130,7 @@ export class BST<T extends IComparable,
           }
         case n.right === prev:
           queue.pop();
-          for ( let item of n ) {
+          for ( const item of n ) {
             yield item;
           }
       }
@@ -271,14 +273,14 @@ export class BST<T extends IComparable,
     switch ( true ) {
       //@ts-ignore
       case item > parent && parent.right === null:
-        item.parent = parent;
-        parent.right  = item;
+        item.parent  = parent;
+        parent.right = item;
         break;
 
       //@ts-ignore
       case item < parent && parent.left === null:
         item.parent = parent;
-        parent.left   = item;
+        parent.left = item;
         break;
       //@ts-ignore
       case item > parent && parent.right !== null:

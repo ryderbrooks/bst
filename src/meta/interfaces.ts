@@ -1,6 +1,4 @@
-
-
-export interface INode<T extends IComparable> extends IComparable{
+export interface INode<T extends IComparable> extends IComparable {
   left: this | null;
   right: this | null;
   parent: this | null;
@@ -8,18 +6,28 @@ export interface INode<T extends IComparable> extends IComparable{
   item: T;
 }
 
+
+
 export interface IDataStructure<T extends IComparable, N extends INode<T>> {
   size: number;
   root: N | null;
-  insert(item: T): N;
-  remove(item: T): T;
-  find(item: T): N;
-  traversInOrderFrom(node?: N| null): IterableIterator<T>;
-  traversPreOrderFrom(node?: N| null): IterableIterator<T>;
-  traversPostOrderFrom(node?: N| null): IterableIterator<T>;
+
+  insert( item: T ): N;
+
+  remove( item: T ): T;
+
+  find( item: T ): N;
+
+  traversInOrderFrom( node?: N | null ): IterableIterator<T>;
+
+  traversPreOrderFrom( node?: N | null ): IterableIterator<T>;
+
+  traversPostOrderFrom( node?: N | null ): IterableIterator<T>;
 }
 
-export interface IBST<T extends IComparable, N extends IBSTNode<T>> extends IDataStructure<T, N>{
+
+
+export interface IBST<T extends IComparable, N extends IBSTNode<T>> extends IDataStructure<T, N> {
   rotateLeft( rotationRoot: N ): IRotation<N>;
 
   rotateRight( rotationRoot: N ): IRotation<N>;
@@ -31,6 +39,7 @@ export interface IRotation<N> {
   previousRoot: N;
   currentRoot: N;
 }
+
 
 
 export interface IComparable {
@@ -53,11 +62,13 @@ export interface INodeFactory<T extends IComparable, N extends IBSTNode<T>> {
 }
 
 
-export interface IBSTNode<T extends IComparable> extends INode<T>{
+
+export interface IBSTNode<T extends IComparable> extends INode<T> {
+
+  comparable: number;
 
   [ Symbol.iterator ](): Iterator<T>;
 
-  comparable: number;
   swapChild( currentChild: this, newChild: this ): void;
 
 

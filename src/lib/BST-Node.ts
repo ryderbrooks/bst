@@ -6,8 +6,11 @@ export class BSTNode<T extends IComparable> {
   //@ts-ignore
   public constructor( item: T, parent: this | null = null, comparable?: number ) {
     this.parent     = parent;
-    this._item = item;
-    this.comparable = comparable === undefined ? item.valueOf(): comparable;
+    this._item      = item;
+    this.comparable =
+      comparable === undefined
+      ? item.valueOf()
+      : comparable;
   }
 
 
@@ -18,18 +21,20 @@ export class BSTNode<T extends IComparable> {
   public _parent: this | null = null;
 
 
-  public get item(): T{
-    if(this._item === null){
-      throw new Error('item is null');
-    }
-    return this._item;
-  }
   //@ts-ignore
   protected _removeChild( item: T, child: this | null ): boolean {
     if( child === null ) {
       return false;
     }
     return true;
+  }
+
+
+  public get item(): T {
+    if( this._item === null ) {
+      throw new Error('item is null');
+    }
+    return this._item;
   }
 
 
@@ -86,21 +91,23 @@ export class BSTNode<T extends IComparable> {
     }
   }
 
+
   public removeChild( item: T ): boolean {
     //@ts-ignore
-    if(this.left !== null && item.valueOf() == this.left){
+    if( this.left !== null && item.valueOf() == this.left ) {
       this.left.parent = null;
-      this.left = null;
+      this.left        = null;
       return true;
     }
     //@ts-ignore
-    if(this.right !== null && item.valueOf() == this.right){
+    if( this.right !== null && item.valueOf() == this.right ) {
       this.right.parent = null;
-      this.right = null;
+      this.right        = null;
       return true;
     }
     throw new Error('child does not exist on node');
   }
+
 
   public removeLeftChild( item: T ): boolean {
     if( this._removeChild(item, this.left) ) {
@@ -126,7 +133,8 @@ export class BSTNode<T extends IComparable> {
            : false;
   }
 
-  public * [Symbol.iterator](): Iterator<T> {
+
+  public* [ Symbol.iterator ](): Iterator<T> {
     yield this.item;
   }
 
@@ -145,7 +153,7 @@ export class BSTNode<T extends IComparable> {
         throw new Error('could not find child');
     }
 
-    if(newChild.parent){
+    if( newChild.parent ) {
       //@ts-ignore
       newChild.parent.removeChild(newChild);
     }
@@ -154,9 +162,10 @@ export class BSTNode<T extends IComparable> {
 }
 
 
-export function createBSTNode<T extends IComparable>(item: T,
-                                                     parent: IBSTNode<T> | null = null,
-                                                     comparable?: number): IBSTNode<T> {
+
+export function createBSTNode<T extends IComparable>( item: T,
+                                                      parent: IBSTNode<T> | null = null,
+                                                      comparable?: number ): IBSTNode<T> {
   return new BSTNode(item, parent, comparable);
 }
 
