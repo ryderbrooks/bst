@@ -7,3 +7,6 @@ import { createBSTNode } from './lib/BST-Node';
 export function createBST<T extends IComparable>(): IBST<T, IBSTNode<T>> {
   return new BST<T, IBSTNode<T>>(createBSTNode);
 }
+
+export {BST} from './lib/BST';
+export {BSTNode} from './lib/BST-Node';
