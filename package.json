@@ -1,0 +1,66 @@
+{
+  "name": "@ryderbrooks/bst",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "setup": "npm install",
+    "build": "tsc",
+    "lint": "node_modules/.bin/eslint --ignore-path .gitignore ./src/**/*.ts -f json -o ./reports/lint/eslint.json",
+    "test:dist": "node_modules/.bin/jest --testMatch=**/dist/__tests__/*.test.js --testResultsProcessor=",
+    "test": "node_modules/.bin/jest --testResultsProcessor=",
+    "test:src:coverage": "node_modules/.bin/jest --coverage",
+    "typedoc": "typedoc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryderbrooks/bst.git"
+  },
+  "homepage": "https://github.com/ryderbrooks/bst#readme",
+  "bugs": {
+    "url": "https://github.com/ryderbrooks/bst/issues"
+  },
+  "files": [
+    "dist/lib/**.js",
+    "dist/lib/*.d.ts",
+    "dist/meta/*.d.ts",
+    "dist/__tests__/*.js",
+    "dist/index.js",
+    "dist/index.d.ts"
+  ],
+  "keywords": [],
+  "author": "Ryder Brooks",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "latest",
+    "@types/node": "latest",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "@typescript-eslint/typescript-estree": "latest",
+    "eslint": "latest",
+    "eslint-plugin-jest": "latest",
+    "jest": "latest",
+    "jest-sonar-reporter": "latest",
+    "ts-jest": "latest",
+    "typedoc": "latest",
+    "typescript": "latest"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "verbose": true,
+    "testResultsProcessor": "jest-sonar-reporter",
+    "coverageDirectory": "reports/coverage",
+    "testMatch": [
+      "**/src/__tests__/*.test.ts"
+    ]
+  },
+  "jestSonar": {
+    "reportPath": "reports/coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
